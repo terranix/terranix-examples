@@ -27,6 +27,11 @@
         };
       in {
         defaultPackage = terraformConfiguration;
+        # nix develop
+        devShell = pkgs.mkShell {
+          buildInputs =
+            [ pkgs.terraform_0_15 terranix.defaultPackage.${system} ];
+        };
         # nix run ".#apply"
         apps.apply = {
           type = "app";
