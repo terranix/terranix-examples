@@ -12,6 +12,8 @@ nix flake show github:terranix/terranix-examples#flake
 
 init an example using nix flake templates
 ```sh
+mkdir terranix-flake-example
+cd terranix-flake-example
 nix flake init -t github:terranix/terranix-examples#flake
 ```
 
