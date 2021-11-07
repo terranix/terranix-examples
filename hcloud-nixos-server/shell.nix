@@ -1,25 +1,25 @@
 { pkgs ? import <nixpkgs> { } }:
 let
 
-  terranix = pkgs.callPackage ../../default.nix {};
-
+  terranix = pkgs.terranix;
   terraform = pkgs.writers.writeBashBin "terraform" ''
     export TF_VAR_hcloud_api_token=`${pkgs.pass}/bin/pass development/hetzner.com/api-token`
-    ${pkgs.terraform_0_12}/bin/terraform "$@"
+    ${pkgs.terraform_0_15}/bin/terraform "$@"
   '';
 
-in pkgs.mkShell {
+in
+pkgs.mkShell {
 
   buildInputs = [
 
     terranix
     terraform
 
-    (pkgs.writers.writeBashBin "example-prepare" ''
+    (pkgs.writers.writeBashBin "terranix-prepare" ''
       ${pkgs.openssh}/bin/ssh-keygen -P "" -f ${toString ./.}/sshkey
     '')
 
-    (pkgs.writers.writeBashBin "example-run" ''
+    (pkgs.writers.writeBashBin "terranix-apply" ''
       set -e
       set -o pipefail
       ${terranix}/bin/terranix | ${pkgs.jq}/bin/jq '.' > config.tf.json
@@ -27,7 +27,7 @@ in pkgs.mkShell {
       ${terraform}/bin/terraform apply
     '')
 
-    (pkgs.writers.writeBashBin "example-cleanup" ''
+    (pkgs.writers.writeBashBin "terranix-destroy" ''
       ${terraform}/bin/terraform destroy
       rm ${toString ./.}/config.tf.json
       rm ${toString ./.}/sshkey

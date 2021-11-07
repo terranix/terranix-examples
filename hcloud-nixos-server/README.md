@@ -5,9 +5,9 @@ This setup shows:
 * how to use a terranix module
 * how to run terranix and terraform
 
-Deploy
+Deploy a
 [NixOS servers](https://nixos.org/)
-on
+in
 [hcloud](https://www.hetzner.com/cloud)
 using
 [nixos-infect](https://github.com/elitak/nixos-infect).
@@ -23,12 +23,13 @@ update your `/etc/hosts`.
 
 ## What you need
 
-* a setup [passwordstore](https://www.passwordstore.org/).
-* a [hcloud token](https://docs.hetzner.cloud/#overview-getting-started) 
-  stored under `development/hetzner.com/api-token`
+* [passwordstore](https://www.passwordstore.org/).
+  * a [hcloud token](https://docs.hetzner.cloud/#overview-getting-started) 
+    stored under `development/hetzner.com/api-token`
 
 ## Steps
 
-* `example-prepare`: to create ssh keys.
-* `example-run`: to run terranix and terraform.
-* `example-cleanup`: to delete server, ssh keys and terraform data. (don't forget that step, or else it gets costly)
+* `terranix-prepare`: to create ssh keys.
+* `terranix-apply`: to run terranix and terraform.
+* `terranix-destroy`: to delete server, ssh keys and terraform data.
+  (don't forget that step, or else it gets costly)
