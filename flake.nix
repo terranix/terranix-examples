@@ -14,6 +14,11 @@
         path = ./flake;
         description = "shows how to use nix flakes and terranix";
       };
+      # nix flake init -t github:terranix/terranix-examples#module
+      module = {
+        path = ./module;
+        description = "shows how to crate a terranix module and including flake.nix";
+      };
       # nix flake init -t github:terranix/terranix-examples#hcloud-nixos-server
       hcloud-nixos-server = {
         path = ./hcloud-nixos-server;

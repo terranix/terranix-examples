@@ -1,0 +1,40 @@
+{
+  "terranix.example.module.enable": {
+    "declarations": [
+      {
+        "channelPath": "/default.nix",
+        "path": "default.nix",
+        "url": "https://github.com/terranix/terranix-module-example/tree/main/moduledefault.nix"
+      }
+    ],
+    "default": false,
+    "description": "Whether to enable example module.",
+    "example": true,
+    "loc": [
+      "terranix",
+      "example",
+      "module",
+      "enable"
+    ],
+    "readOnly": false,
+    "type": "boolean"
+  },
+  "terranix.example.module.text": {
+    "declarations": [
+      {
+        "channelPath": "/default.nix",
+        "path": "default.nix",
+        "url": "https://github.com/terranix/terranix-module-example/tree/main/moduledefault.nix"
+      }
+    ],
+    "description": "text of the example file",
+    "loc": [
+      "terranix",
+      "example",
+      "module",
+      "text"
+    ],
+    "readOnly": false,
+    "type": "string"
+  }
+}
